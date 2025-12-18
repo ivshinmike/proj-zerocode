@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Чек {{ invoice_id }}</title>
+    <style>
+        body {
+            margin: 32px;
+            font-family: "PDFFont", sans-serif;
+            color: #222;
+        }
+
+        h1 {
+            margin: 0 0 12px;
+        }
+
+        .meta {
+            margin-bottom: 16px;
+            color: #555;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background: #f4f4f4;
+        }
+
+        .total {
+            text-align: right;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Чек № {{ invoice_id }}</h1>
+    <div class="meta">
+        <div>Дата: {{ date }}</div>
+        <div>Покупатель: {{ customer }}</div>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Кол-во</th>
+                <th>Сумма</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ product }}</td>
+                <td>{{ price }}</td>
+                <td>{{ qty }}</td>
+                <td>{{ price * qty }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="total">Итого</td>
+                <td>{{ price * qty }}</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
+
+
